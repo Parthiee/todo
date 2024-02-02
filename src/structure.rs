@@ -59,12 +59,12 @@ impl fmt::Display for todo {
         if self.action == "done"
         {
 
-            write!(f, "[✔] {:30} {:30} {:30}", self.task.truecolor(189,224,254).strikethrough(), self.date_created.truecolor(189,224,254), self.date_completed.truecolor(189,224,254))
+            write!(f, "[✔] {}. {:30} {:30} {:30}",self.task_no.to_string().truecolor(189,224,254).strikethrough(), self.task.truecolor(189,224,254).strikethrough(), self.date_created.truecolor(189,224,254), self.date_completed.truecolor(189,224,254))
         }
 
         else 
         {
-            write!(f, "[ ] {:30} {:30} {:30}", self.task.truecolor(255,255,138), self.date_created.truecolor(255,255,138), self.date_completed.truecolor(255,255,138))
+            write!(f, "[ ] {}. {:30} {:30} {:30}", self.task_no.to_string().truecolor(255,255,138), self.task.truecolor(255,255,138), self.date_created.truecolor(255,255,138), self.date_completed.truecolor(255,255,138))
         }
         
 

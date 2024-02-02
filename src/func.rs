@@ -35,8 +35,7 @@ pub fn add_to_file(action: String, task: String)
                 }
         
                 };
-     
-                
+    
     if fs::metadata(filename).unwrap().len() != 0 
     {
         todo_all = serde_json::from_str(&data).unwrap();
@@ -60,6 +59,13 @@ pub fn add_to_file(action: String, task: String)
         
     }
 
+    else if action == "del"
+    {
+        let in_ = todo_all.iter_mut().position(|x| x.get_index() == task.trim().parse::<i32>().unwrap()); 
+        todo_all.remove(in_.unwrap());
+      
+    }
+
     else if action == "add"
     {
         todo_all.push(todo::new(action,task));
@@ -78,8 +84,6 @@ pub fn add_to_file(action: String, task: String)
     let data = serde_json::to_string(&todo_all).unwrap(); 
     let _ = fs::write(filename, data);
 
-
-    
 
 
 }

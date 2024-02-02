@@ -5,8 +5,6 @@ use crate::func::{add_to_file, fetch_entries};
 use std::env;
 
 
-
-
 fn main() {
     
     let argv: Vec<String> = env::args().collect();
@@ -29,10 +27,12 @@ fn main() {
 
     if action == "show"
     {
+        
         fetch_entries();
         return;
     }
 
+   
 
 
     for index in 2..=argv.len()
@@ -58,7 +58,7 @@ fn main() {
     }
     
     
-
+    
 
     add_to_file(action.clone(),task.clone());
     fetch_entries();
